@@ -2,11 +2,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 
-// Service function
+// * Function imports
 import { getAllActivites } from '../../services/activities'
 
 export default function ActivityIndex(){
-  // * State
+  // * States
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
@@ -25,12 +25,9 @@ export default function ActivityIndex(){
     }
     getActivities()
   }, [])
+  
 
-
-  // 1. If there is an error, display it
-  // 2. If there is no error, but loading is true, display loading icon
-  // 3. If there is no error, loading is false, display data
-
+// * Render to UI
   return (
     <>
       <h1>Activities</h1>

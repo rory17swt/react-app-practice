@@ -4,15 +4,15 @@ import { useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities'
 
 export default function ActivityShow(){
-  // * State
+  // * States
   const [activity, setActivity] = useState({})
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
 
-  // * Params
+  // * useParams
   const { activityId } = useParams()
 
-  // * Effects
+  // * useEffects
   useEffect(() => {
     async function getActivity(){
       try {
@@ -31,6 +31,8 @@ export default function ActivityShow(){
     getActivity()
   }, [activityId])
 
+
+  // * Render to UI
   return (
     <>
       {error
