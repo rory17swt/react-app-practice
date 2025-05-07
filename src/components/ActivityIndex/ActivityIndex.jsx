@@ -3,28 +3,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 
 // * Function imports
-import { getAllActivites } from '../../services/activities'
+import { getAllActivites } from '../../services/activities.js'
+import useFetch from '../../hooks/useFetch.js'
 
 export default function ActivityIndex() {
   // * States
-  const [activities, setActivities] = useState([])
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
-
-  // * On component mount (on the first render of the page)
-  useEffect(() => {
-    async function getActivities(){
-      try {
-        const { data } = await getAllActivites()
-        setActivities(data)
-      } catch {
-        setError('Failed to fetch activity data. Please try again later.')
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    getActivities()
-  }, [])
+  const { data: activities, isLoading, error } = useFetch(getAllActivites, [])
   
 
 // * Render to UI
