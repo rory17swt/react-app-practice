@@ -36,11 +36,11 @@ export default function ActivityShow(){
   return (
     <>
       {error
-        ? <p className='error-message'>{error}</p>
+        ? <p>{error}</p>
         : loading
           ? <p>Loading...</p>
           : (
-            <section className="single-activity">
+            <section>
               <h1>{activity.title}</h1>
             </section>
           )

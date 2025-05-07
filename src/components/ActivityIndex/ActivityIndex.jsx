@@ -31,9 +31,9 @@ export default function ActivityIndex(){
   return (
     <>
       <h1>Activities</h1>
-      <section className="activity-list">
+      <section>
         {error 
-          ? <p className='error-message'>{error}</p>
+          ? <p>{error}</p>
           : loading
             ? <p>Loading...</p>
             : activities.length > 0
