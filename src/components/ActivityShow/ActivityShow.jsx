@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities'
 
-export default function ActivityShow(){
+export default function ActivityShow() {
   // * States
   const [activity, setActivity] = useState({})
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   // * useParams
   const { activityId } = useParams()
 
   // * useEffects
   useEffect(() => {
-    async function getActivity(){
+    async function getActivity() {
       try {
         const { data } = await getSingleActivity(activityId)
         setActivity(data)
@@ -25,7 +25,7 @@ export default function ActivityShow(){
           setError(error.message)
         }
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
     getActivity()
@@ -37,7 +37,7 @@ export default function ActivityShow(){
     <>
       {error
         ? <p>{error}</p>
-        : loading
+        : isLoading
           ? <p>Loading...</p>
           : (
             <section>

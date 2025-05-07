@@ -5,11 +5,11 @@ import { Link } from 'react-router'
 // * Function imports
 import { getAllActivites } from '../../services/activities'
 
-export default function ActivityIndex(){
+export default function ActivityIndex() {
   // * States
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   // * On component mount (on the first render of the page)
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function ActivityIndex(){
       } catch {
         setError('Failed to fetch activity data. Please try again later.')
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
     getActivities()
@@ -34,7 +34,7 @@ export default function ActivityIndex(){
       <section>
         {error 
           ? <p>{error}</p>
-          : loading
+          : isLoading
             ? <p>Loading...</p>
             : activities.length > 0
               ? activities.map(activity => (

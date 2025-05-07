@@ -1,7 +1,7 @@
 import { NavLink } from "react-router"
 
 
-export default function Navbar(){
+export default function Navbar() {
   return (
     <header>
       <div>
