@@ -22,3 +22,13 @@ export const getSingleActivity = async (activityId) => {
     throw error
   }
 }
+
+export const createActivity = async(formData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/activities`, formData)
+    return response
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

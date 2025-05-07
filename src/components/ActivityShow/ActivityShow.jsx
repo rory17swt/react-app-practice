@@ -11,8 +11,8 @@ export default function ActivityShow() {
 
   // * States
  const { data: activity, isLoading, error} = useFetch(
-  () => getSingleActivity(activityId),
-  {}
+  () => getSingleActivity(activityId), // service function
+  {} // initial data value
  )
 
   
@@ -26,6 +26,9 @@ export default function ActivityShow() {
           : (
             <section>
               <h1>{activity.title}</h1>
+              <h2>{activity.location}</h2>
+              <p>{activity.description}</p>
+              <p>{activity.duration} minutes</p>
             </section>
           )
       }

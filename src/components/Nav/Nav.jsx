@@ -8,7 +8,8 @@ export default function Navbar() {
         <NavLink to="/">Home</NavLink>
       </div>
       <nav>
-        <a href="/activities">Activities</a>
+      <NavLink to="/activities/new">Create activity</NavLink>
+      <NavLink to="/activities">Activities</NavLink>
       </nav>
     </header>
   )
