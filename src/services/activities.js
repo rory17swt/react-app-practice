@@ -5,8 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getAllActivites = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/activities`)
-    return response
+    return await axios.get(`${BASE_URL}/activities`)
   } catch (error) {
     console.log(error)
     throw error
@@ -15,18 +14,35 @@ export const getAllActivites = async () => {
 
 export const getSingleActivity = async (activityId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/activities/${activityId}`)
-    return response
+    return await axios.get(`${BASE_URL}/activities/${activityId}`)
   } catch (error) {
     console.log(error)
     throw error
   }
 }
 
-export const createActivity = async(formData) => {
+export const createActivity = async (formData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/activities`, formData)
-    return response
+    return await axios.post(`${BASE_URL}/activities`, formData)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const editActivity = async (activityId, formData) => {
+  try {
+    return await axios.put(`${BASE_URL}/activities/${activityId}`, formData)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+// Delete
+export const deleteActivity = async (activityId) => {
+  try {
+    return await axios.delete(`${BASE_URL}/activities/${activityId}`)
   } catch (error) {
     console.log(error)
     throw error

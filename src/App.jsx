@@ -7,6 +7,7 @@ import Navbar from './components/Nav/Nav.jsx'
 import ActivityIndex from './components/ActivityIndex/ActivityIndex'
 import ActivityShow from './components/ActivityShow/ActivityShow'
 import ActivityCreate from './components/ActivityCreate/ActivityCreate.jsx'
+import ActivityEdit from './components/ActivityUpdate/ActivityEdit.jsx'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/activities" element={<ActivityIndex />} />
         <Route path="/activities/:activityId" element={<ActivityShow />} />
         <Route path="/activities/new" element={<ActivityCreate />} />
+        <Route path="/activities/:activityId/edit" element={<ActivityEdit />} />
       </Routes>
     </>
   )

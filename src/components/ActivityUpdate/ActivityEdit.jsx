@@ -1,35 +1,36 @@
-import { useState } from "react";
-import { createActivity } from "../../services/activities";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { editActivity, getSingleActivity } from "../../services/activities";
 
 
-export default function ActivityCreate() {
-    // * States 
+export default function ActivityEdit() {
+    // * States
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         location: '',
-        duration: ''
+        duration: '',
     })
 
-    const [error, setError] = useState('')
+    const [error, setError] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
     // * Varibles
+    const { activityId } = useParams()
     const navigate = useNavigate()
 
 
-    // * Form functions
-    async function handleInputChange(event) {
-        setFormData({ ...formData, [event.target.name]: event.target.value })
+    // * Form function
+    const handleInputChange = ({ target }) => {
+        setFormData({ ...formData, [target.name]: target.value })
     }
 
-    async function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault()
         setIsLoading(true)
         try {
-            const { data } = await createActivity(formData)
-            navigate(`/activities/${data._id}`)
+            await editActivity(activityId, formData)
+            navigate(`/activities/${activityId}`)
         } catch (error) {
             setError(error.response.data)
         } finally {
@@ -37,11 +38,26 @@ export default function ActivityCreate() {
         }
     }
 
+    // * useEffect
+    useEffect(() => {
+        async function getActivityData() {
+            try {
+                const { data } = await getSingleActivity(activityId)
+                setFormData(data)
+            } catch (error) {
+                console.log(error)
+                throw error
+            }
+        }
+        getActivityData()
+    }, [activityId])
+
+
     // * Form
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <h1>Add an Activity!</h1>
+                <h1>Edit an Activity!</h1>
 
                 {/* Title */}
                 <div>
@@ -78,29 +94,29 @@ export default function ActivityCreate() {
                         type="text"
                         name="location"
                         id="location"
-                        placeholder="Glasgow, Scotland"
+                        placeholder="Edinburgh, Scotland"
                         onChange={handleInputChange}
                         value={formData.location}
-                        />
-                        {error.location && <p>{error.location}</p>}
+                    />
+                    {error.location && <p>{error.location}</p>}
                 </div>
 
                 {/* Duration */}
                 <div>
                     <label htmlFor="duration">Duration(mins): </label>
                     <input
-                        type="number" 
-                        name="duration" 
-                        id="duration" 
+                        type="number"
+                        name="duration"
+                        id="duration"
                         placeholder="60"
                         onChange={handleInputChange}
                         value={formData.duration}
-                        />
-                        {error.duration && <p>{error.duration}</p>}
+                    />
+                    {error.duration && <p>{error.duration}</p>}
                 </div>
 
                 {/* Submit */}
-                <button type="submit">Add Activity</button>
+                <button type="submit">Update Activity</button>
             </form>
         </>
     )

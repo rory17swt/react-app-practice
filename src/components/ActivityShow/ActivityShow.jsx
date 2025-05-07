@@ -1,9 +1,13 @@
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities.js'
 
 import useFetch from '../../hooks/useFetch.js'
+
+// * Components
+// ** Add delete **
+import ActivityDelete from '../ActivityDelete/ActivityDelete.jsx'
 
 export default function ActivityShow() {
   // * useParams
@@ -29,6 +33,8 @@ export default function ActivityShow() {
               <h2>{activity.location}</h2>
               <p>{activity.description}</p>
               <p>{activity.duration} minutes</p>
+              <Link to={`/activities/${activityId}/edit`}>Edit</Link>
+              <ActivityDelete />
             </section>
           )
       }

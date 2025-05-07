@@ -25,6 +25,7 @@ export default function ActivityIndex() {
                 <Link key={activity._id} to={`/activities/${activity._id}`}>
                   <article>
                     <h2>{activity.title}</h2>
+                    <h3>{activity.location}</h3>
                   </article>
                 </Link>
               ))
