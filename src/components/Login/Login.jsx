@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router"
 import { login } from "../../services/auth.js"
-import { setToken } from "../../utils/auth.js"
+import { setToken, getUserFromToken } from "../../utils/auth.js"
+import { UserContext } from '../../contexts/UserContext.jsx'
+
 
 export default function Login() {
+    // * Context
+    const { setUser } = useContext(UserContext)
+
     // * States
     const [formData, setFormData] = useState({
         email: '',
@@ -28,7 +33,10 @@ export default function Login() {
             setIsLoading(true)
             try {
                 const { data } = await login(formData)
+                // Set token from the respones to storage
                 setToken(data.token)
+                // Set the user object inside thye token to the user
+                setUser(getUserFromToken())
                 navigate('/activities')
             } catch (error) {
                 setError(error.response.data)

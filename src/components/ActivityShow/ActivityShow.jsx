@@ -1,12 +1,10 @@
-
-import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities.js'
-
 import useFetch from '../../hooks/useFetch.js'
+import { UserContext } from '../../contexts/UserContext.jsx'
+import { useContext } from 'react'
 
 // * Components
-// ** Add delete **
 import ActivityDelete from '../ActivityDelete/ActivityDelete.jsx'
 
 export default function ActivityShow() {
