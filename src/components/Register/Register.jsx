@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { register } from "../../services/auth.js";
+import { useNavigate } from "react-router";
 
 
 export default function Register() {
@@ -15,7 +16,7 @@ export default function Register() {
     const [isLoading, setIsLoading] = useState(false)
 
     // * Varibles
-    // navigate
+    const navigate = useNavigate()
 
     // * Functions
     async function handleInputChange(event) {
@@ -27,7 +28,7 @@ export default function Register() {
         setIsLoading(true)
         try {
             const { data } = await register(formData)
-            console.log(data)
+            navigate('/login')
         } catch (error) {
             setError(error.response.data)
         } finally {

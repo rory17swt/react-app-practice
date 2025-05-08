@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { editActivity, getSingleActivity } from "../../services/activities";
 
 
@@ -117,7 +117,7 @@ export default function ActivityEdit() {
 
                 {/* Submit */}
                 <button type="submit">Update Activity</button>
-            </form>
+            </form>         
         </>
     )
 

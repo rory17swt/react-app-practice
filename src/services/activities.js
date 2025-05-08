@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getToken } from '../utils/auth.js'
 
 // * Base API import
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
@@ -27,7 +28,11 @@ export const getSingleActivity = async(activityId) => {
 // Create
 export const createActivity = async(formData) => {
   try {
-    return await axios.post(`${BASE_URL}/activities`, formData)
+    return await axios.post(`${BASE_URL}/activities`, formData, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      }
+    })
   } catch (error) {
     console.log(error)
     throw error
@@ -37,7 +42,11 @@ export const createActivity = async(formData) => {
 // Edit
 export const editActivity = async(activityId, formData) => {
   try {
-    return await axios.put(`${BASE_URL}/activities/${activityId}`, formData)
+    return await axios.put(`${BASE_URL}/activities/${activityId}`, formData, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      }
+    })
   } catch (error) {
     console.log(error)
     throw error
@@ -47,7 +56,11 @@ export const editActivity = async(activityId, formData) => {
 // Delete
 export const deleteActivity = async(activityId) => {
   try {
-    return await axios.delete(`${BASE_URL}/activities/${activityId}`)
+    return await axios.delete(`${BASE_URL}/activities/${activityId}`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      }
+    })
   } catch (error) {
     console.log(error)
     throw error
