@@ -8,6 +8,7 @@ import ActivityIndex from './components/ActivityIndex/ActivityIndex'
 import ActivityShow from './components/ActivityShow/ActivityShow'
 import ActivityCreate from './components/ActivityCreate/ActivityCreate.jsx'
 import ActivityEdit from './components/ActivityUpdate/ActivityEdit.jsx'
+import Register from './components/Register/Register.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/activities/:activityId" element={<ActivityShow />} />
         <Route path="/activities/new" element={<ActivityCreate />} />
         <Route path="/activities/:activityId/edit" element={<ActivityEdit />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   )

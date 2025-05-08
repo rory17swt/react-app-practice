@@ -45,7 +45,7 @@ export default function ActivityCreate() {
 
                 {/* Title */}
                 <div>
-                    <label htmlFor="title">Title: </label>
+                    <label htmlFor="title">Title </label>
                     <input
                         type="text"
                         name="title"
@@ -60,7 +60,7 @@ export default function ActivityCreate() {
 
                 {/* Description */}
                 <div>
-                    <label htmlFor="description">Description: </label>
+                    <label htmlFor="description">Description </label>
                     <textarea
                         name="description"
                         id="description"
@@ -73,7 +73,7 @@ export default function ActivityCreate() {
 
                 {/* Location */}
                 <div>
-                    <label htmlFor="location">Location: </label>
+                    <label htmlFor="location">Location </label>
                     <input
                         type="text"
                         name="location"
@@ -87,7 +87,7 @@ export default function ActivityCreate() {
 
                 {/* Duration */}
                 <div>
-                    <label htmlFor="duration">Duration(mins): </label>
+                    <label htmlFor="duration">Duration(mins) </label>
                     <input
                         type="number" 
                         name="duration" 
