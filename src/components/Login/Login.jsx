@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router"
+import { Navigate, useNavigate } from "react-router"
 import { login } from "../../services/auth.js"
 import { setToken, getUserFromToken } from "../../utils/auth.js"
 import { UserContext } from '../../contexts/UserContext.jsx'
@@ -7,7 +7,7 @@ import { UserContext } from '../../contexts/UserContext.jsx'
 
 export default function Login() {
     // * Context
-    const { setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     // * States
     const [formData, setFormData] = useState({
@@ -43,6 +43,10 @@ export default function Login() {
             } finally {
                 setIsLoading(false)
             }
+        }
+
+        if(user) {
+            return <Navigate to="/" />
         }
 
 

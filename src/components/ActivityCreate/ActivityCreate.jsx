@@ -1,9 +1,13 @@
-import { useState } from "react";
-import { createActivity } from "../../services/activities";
-import { useNavigate } from "react-router";
+import { useContext, useState } from "react"
+import { createActivity } from "../../services/activities"
+import { Navigate, useNavigate } from "react-router"
+import { UserContext } from "../../contexts/UserContext"
+
 
 
 export default function ActivityCreate() {
+    // * Context
+    const { user } = useContext(UserContext)
     // * States 
     const [formData, setFormData] = useState({
         title: '',
@@ -36,6 +40,11 @@ export default function ActivityCreate() {
             setIsLoading(false)
         }
     }
+
+    if(!user) {
+        return <Navigate to="/login" />
+    }
+
 
     // * Form
     return (

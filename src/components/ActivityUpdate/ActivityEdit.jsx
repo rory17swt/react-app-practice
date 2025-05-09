@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { editActivity, getSingleActivity } from "../../services/activities";
+import { UserContext } from "../../contexts/UserContext";
 
 
 export default function ActivityEdit() {
+    // * Context
+    const { user } = useContext(UserContext)
     // * States
     const [formData, setFormData] = useState({
         title: '',
@@ -51,6 +54,10 @@ export default function ActivityEdit() {
         }
         getActivityData()
     }, [activityId])
+
+    if(!user) {
+        return <Navigate to="/login" />
+    }
 
 
     // * Form

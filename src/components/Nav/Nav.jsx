@@ -18,9 +18,6 @@ export default function Navbar() {
   // * Navbar
   return (
     <header>
-      <div>
-        <NavLink to="/">Home</NavLink>
-      </div>
       <nav>
         <NavLink to="/activities">Activities</NavLink>
         {user
@@ -28,14 +25,14 @@ export default function Navbar() {
             <>
               {/* Singed in routes */}
               <NavLink to="/activities/new">Create activity</NavLink>
-              <NavLink onClick={handleSignedOut} to="/Login">Sign out</NavLink>
+              <NavLink onClick={handleSignedOut} to="/login">Sign out</NavLink>
             </>
           )
           : (
             <>
               {/* Singed out routes */}
               <NavLink to="/register">Register</NavLink>
-              <NavLink to="/Login">Login</NavLink>
+              <NavLink to="/login">Login</NavLink>
             </>
           )
         }

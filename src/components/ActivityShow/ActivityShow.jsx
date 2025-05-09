@@ -8,6 +8,8 @@ import { useContext } from 'react'
 import ActivityDelete from '../ActivityDelete/ActivityDelete.jsx'
 
 export default function ActivityShow() {
+  // * Context
+  const { user } = useContext(UserContext)
   // * useParams
   const { activityId } = useParams()
 
@@ -31,8 +33,12 @@ export default function ActivityShow() {
               <h2>{activity.location}</h2>
               <p>{activity.description}</p>
               <p>{activity.duration} minutes</p>
+              { user && user._id === activity.owner &&
+              <div>
               <Link to={`/activities/${activityId}/edit`}>Edit</Link>
               <ActivityDelete />
+              </div>
+              }
             </section>
           )
       }

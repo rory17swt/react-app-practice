@@ -1,17 +1,29 @@
 import { Routes, Route } from 'react-router'
 
-// Global components
+// * Global components
 import Navbar from './components/Nav/Nav.jsx'
 
-// Page component
+// * Page component
 import ActivityIndex from './components/ActivityIndex/ActivityIndex'
 import ActivityShow from './components/ActivityShow/ActivityShow'
 import ActivityCreate from './components/ActivityCreate/ActivityCreate.jsx'
 import ActivityEdit from './components/ActivityUpdate/ActivityEdit.jsx'
 import Register from './components/Register/Register.jsx'
 import Login from './components/Login/Login.jsx'
+import SplashPage from './components/SplashPage/SplashPage.jsx'
+import Dashboard from './components/Dashboard/Dashboard.jsx'
 
+
+// * Context
+import { use, useContext } from 'react'
+import { UserContext } from './contexts/UserContext.jsx'
+
+
+// * App function
 export default function App() {
+
+  const { user } = useContext
+
   return (
     <>
       <Navbar />
@@ -22,6 +34,10 @@ export default function App() {
         <Route path="/activities/:activityId/edit" element={<ActivityEdit />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+        {use
+          ? <Route path="/" element={<Dashboard />} />
+          : <Route path="/" element={<SplashPage />} />} 
       </Routes>
     </>
   )

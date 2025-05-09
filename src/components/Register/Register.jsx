@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { register } from "../../services/auth.js";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
+import { UserContext } from "../../contexts/UserContext.jsx";
 
 
 export default function Register() {
+    // * Context 
+    const { user } = useContext(UserContext)
     // * States
     const [formData, setFormData] = useState({
         email: '',
@@ -36,6 +39,9 @@ export default function Register() {
         }
     }
 
+    if(user) {
+        return <Navigate to="/" />
+    }
 
     // * Form
     return (
