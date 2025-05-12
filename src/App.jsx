@@ -10,8 +10,6 @@ import ActivityCreate from './components/ActivityCreate/ActivityCreate.jsx'
 import ActivityEdit from './components/ActivityUpdate/ActivityEdit.jsx'
 import Register from './components/Register/Register.jsx'
 import Login from './components/Login/Login.jsx'
-import SplashPage from './components/SplashPage/SplashPage.jsx'
-import Dashboard from './components/Dashboard/Dashboard.jsx'
 
 
 // * Context
@@ -34,10 +32,6 @@ export default function App() {
         <Route path="/activities/:activityId/edit" element={<ActivityEdit />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
-        {use
-          ? <Route path="/" element={<Dashboard />} />
-          : <Route path="/" element={<SplashPage />} />} 
       </Routes>
     </>
   )
